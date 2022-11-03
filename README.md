@@ -8,7 +8,7 @@ Para realização da conversão é necessário o ID do usuário que deseja realizar a 
 A API deverá registrar cada transação de conversão com todas as informações relacionadas e também
 disponibilizar um endpoint para consulta das transações realizadas por um usuário.
 
-O projeto poderá ser feito na linguagem de programação de sua preferência.
+O projeto deverá ser feito em Node.js com TypeScript.
 
 1. Deve ser possível realizar a conversão entre 4 moedas no mínimo (BRL, USD, EUR, JPY);
 1. As taxas de conversão devem ser obtidas de [https://api.exchangeratesapi.io/latest?base=USD];
