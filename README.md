@@ -11,7 +11,8 @@ disponibilizar um endpoint para consulta das transações realizadas por um usuári
 O projeto deverá ser feito em Node.js com TypeScript.
 
 1. Deve ser possível realizar a conversão entre 4 moedas no mínimo (BRL, USD, EUR, JPY);
-1. As taxas de conversão devem ser obtidas de [https://api.exchangeratesapi.io/latest?base=USD];
+1. As taxas de conversão devem ser obtidas de [https://api.exchangeratesapi.io/latest?base=EUR] 
+  (Usar a API Free - Tem limitação de requisições, e apenas conversão com base na moeda EUR);
 1. As transações de conversão devem ser persistidas no banco de dados (embedded) contendo:
     * ID do usuário;
     * Moeda origem;
@@ -28,7 +29,7 @@ O projeto deverá ser feito em Node.js com TypeScript.
     * Valor destino;
     * Taxa de conversão utilizada;
     * Data/Hora UTC;
-1. Uma transação com falha conhecida deve retornar um erro HTTP 400 com a descrição da falha;
+1. Os casos de falha devem retornar com status code pertinente e descrição no corpo;
 1. Deverá existir um endpoint para listagem de todas as transações realizadas por usuário;
 1. Deve haver uma cobertura satisfatória de testes;
 1. Deve-se adicionar a esse arquivo explicações sobre como rodar a aplicação, e uma apresentação sobre o
