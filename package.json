@@ -1,0 +1,31 @@
+{
+  "name": "recrutamento-conversor-nodejs-santtosvictor42_gmail.com",
+  "version": "1.0.0",
+  "description": "Voc� dever� implementar uma API Rest que seja capaz de realizar a convers�o entre duas moedas\r utilizando taxas de convers�es atualizadas de um servi�o externo.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev src/app.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://victor_santtos67@bitbucket.org/recrutamento_jya_nodejs/recrutamento-conversor-nodejs-santtosvictor42_gmail.com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://bitbucket.org/recrutamento_jya_nodejs/recrutamento-conversor-nodejs-santtosvictor42_gmail.com/issues"
+  },
+  "homepage": "https://bitbucket.org/recrutamento_jya_nodejs/recrutamento-conversor-nodejs-santtosvictor42_gmail.com#readme",
+  "dependencies": {
+    "@types/typescript": "^2.0.0",
+    "eslint": "^8.35.0",
+    "fastify": "^4.14.0",
+    "pino": "^8.11.0",
+    "prettier": "^2.8.4",
+    "typescript": "^4.9.5"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^2.0.0"
+  }
+}
