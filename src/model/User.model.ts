@@ -26,13 +26,9 @@ class UserModel implements UserModelInterface {
 
     async store(user: UserCreateInterface): Promise<User | void> {
         try {
-            const data = await this.User.create(user);
-
-            return data;
+            return await this.User.create(user);
         } catch (error) {
             catchErrorsFunctions(error);
-        } finally {
-            return;
         }
     }
     async findByEmail(email: string): Promise<User | void | null> {
@@ -42,8 +38,6 @@ class UserModel implements UserModelInterface {
             return data;
         } catch (error) {
             catchErrorsFunctions(error);
-        } finally {
-            return;
         }
     }
     async findUserById(id: string): Promise<User | void | null> {

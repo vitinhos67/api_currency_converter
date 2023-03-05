@@ -1,9 +1,7 @@
 import catchErrorsFunctions from '../../common/utils/catchErrorsFunction';
-
 import UserModel from '../../model/User.model';
 import { UserModelInterface, UserServiceInterface } from '../../interfaces/users/userModel.interface';
 import { User } from '../../interfaces/users/User.interface';
-import { FastifyRequest } from 'fastify';
 
 class UserService implements UserServiceInterface {
     private readonly userModel: UserModelInterface;
@@ -30,6 +28,8 @@ class UserService implements UserServiceInterface {
     async store(user: User) {
         try {
             const saveUserDb = await this.userModel.store(user);
+            console.log(saveUserDb);
+
             return saveUserDb;
         } catch (error) {
             catchErrorsFunctions(error);

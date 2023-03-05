@@ -3,6 +3,8 @@ import { UserServiceInterface } from '../interfaces/users/userModel.interface';
 import { User } from '../interfaces/users/User.interface';
 import usersService from '../services/users/users.service';
 import { FastifyRequest } from 'fastify';
+import { UserCreateDTO } from './dto/User/User.dto';
+import Zod = require('zod');
 
 class UserController {
     usersService: UserServiceInterface;
@@ -23,12 +25,18 @@ class UserController {
         }
     }
 
-    async store(req: FastifyRequest<{ Body: User }>): Promise<User | void | null> {
+    async store(req: FastifyRequest<{ Body: User }>, res: any): Promise<User | void | null> {
         try {
-            const body: User = req.body;
+            const body: User = UserCreateDTO.parse(req.body);
             const data = await usersService.store(body);
             return data;
-        } catch (error) {}
+        } catch (error) {
+            if (error instanceof Zod.ZodError) {
+                res.send(error.issues);
+            }
+
+            catchErrorsFunctions(error);
+        }
     }
 }
 
