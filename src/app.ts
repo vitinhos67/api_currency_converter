@@ -5,7 +5,7 @@ dotenv.config();
 import fastify from 'fastify';
 import cors from '@fastify/cors';
 import { FastifyInstance } from 'fastify/types/instance';
-import fastifyMultipart = require('@fastify/multipart');
+
 import pino from 'pino';
 import dbConnector from './config/database';
 import usersRoutes from './routes/User.router';
@@ -15,9 +15,6 @@ const app: FastifyInstance = fastify({
 });
 
 app.register(cors);
-
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-app.register(fastifyMultipart, { addToBody: true }).after(() => {});
 
 app.register(usersRoutes, {
     prefix: '/api/v1',

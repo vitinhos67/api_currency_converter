@@ -1,3 +1,4 @@
+import { FastifyRequest } from 'fastify';
 import { User } from './User.interface';
 import { UserCreateInterface } from './User.interface';
 export interface UserModelInterface {
@@ -10,9 +11,11 @@ export interface UserModelInterface {
 export interface UserServiceInterface {
     findById(id: string): Promise<User | void | null>;
     findAll(): Promise<User[] | void | []>;
+    store(user: User): Promise<User | void>;
 }
 
 export interface UserControllerInterface {
-    findById(req: any, reply: any): Promise<User | void | null>;
+    findById(req: FastifyRequest<{ Params: { id: string } }>): Promise<User | void | null>;
     findAll(): Promise<User[] | void | []>;
+    store(req: FastifyRequest<{ Body: User }>): Promise<User | void | null>;
 }

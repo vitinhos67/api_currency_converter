@@ -22,6 +22,14 @@ class UserController {
             catchErrorsFunctions(error);
         }
     }
+
+    async store(req: FastifyRequest<{ Body: User }>): Promise<User | void | null> {
+        try {
+            const body: User = req.body;
+            const data = await usersService.store(body);
+            return data;
+        } catch (error) {}
+    }
 }
 
 export default new UserController();
