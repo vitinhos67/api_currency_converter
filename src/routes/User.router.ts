@@ -5,6 +5,7 @@ function usersRoutes(fastify: FastifyInstance, options: any, done: any) {
     fastify.get('/users', UserController.findAll);
     fastify.get('/user/:id', UserController.findById);
     fastify.post('/user', UserController.store);
+    fastify.post('/login', UserController.login);
     done();
 }
 

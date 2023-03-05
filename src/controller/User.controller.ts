@@ -1,9 +1,9 @@
 import catchErrorsFunctions from '../common/utils/catchErrorsFunction';
 import { UserServiceInterface } from '../interfaces/users/userModel.interface';
-import { User } from '../interfaces/users/User.interface';
+import { User, UserAuthResponse, UserLoginInterface } from '../interfaces/users/User.interface';
 import usersService from '../services/users/users.service';
 import { FastifyRequest } from 'fastify';
-import { UserCreateDTO } from './dto/User/User.dto';
+import { UserCreateDTO, UserLoginDTO } from './dto/User/User.dto';
 import Zod = require('zod');
 
 class UserController {
@@ -35,6 +35,16 @@ class UserController {
                 res.send(error.issues);
             }
 
+            catchErrorsFunctions(error);
+        }
+    }
+
+    async login(req: FastifyRequest<{ Body: User }>): Promise<UserAuthResponse | void | null> {
+        try {
+            const body: UserLoginInterface = UserLoginDTO.parse(req.body);
+
+            return await usersService.login(body);
+        } catch (error) {
             catchErrorsFunctions(error);
         }
     }
