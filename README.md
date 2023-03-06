@@ -1,52 +1,48 @@
-# Conversor de moedas
+Conversor de moedas
 
-Voc� dever� implementar uma API Rest que seja capaz de realizar a convers�o entre duas moedas
-utilizando taxas de convers�es atualizadas de um servi�o externo.
+Você deverá implementar uma API Rest que seja capaz de realizar a conversão entre duas moedas utilizando taxas de conversões atualizadas de um serviço externo.
 
-Para realiza��o da convers�o � necess�rio o ID do usu�rio que deseja realizar a convers�o.
+Para realização da conversão é necessário o ID do usuário que deseja realizar a conversão.
 
-A API dever� registrar cada transa��o de convers�o com todas as informa��es relacionadas e tamb�m
-disponibilizar um endpoint para consulta das transa��es realizadas por um usu�rio.
+A API deverá registrar cada transação de conversão com todas as informações relacionadas e também disponibilizar um endpoint para consulta das transações realizadas por um usuário.
 
-O projeto dever� ser feito em Node.js com TypeScript.
+O projeto deverá ser feito em Node.js com TypeScript.
 
-1. Deve ser poss�vel realizar a convers�o entre 4 moedas no m�nimo (BRL, USD, EUR, JPY);
-1. As taxas de convers�o devem ser obtidas de [https://api.exchangeratesapi.io/latest?base=EUR]
-   (Usar a API Free - Tem limita��o de requisi��es, e apenas convers�o com base na moeda EUR);
-1. As transa��es de convers�o devem ser persistidas no banco de dados (embedded) contendo:
-    - ID do usu�rio;
-    - Moeda origem;
-    - Valor origem;
-    - Moeda destino;
-    - Taxa de convers�o utilizada;
-    - Data/Hora UTC;
-1. Uma transa��o com sucesso deve retornar:
-    - ID da transa��o
-    - ID do usu�rio;
-    - Moeda origem;
-    - Valor origem;
-    - Moeda destino;
-    - Valor destino;
-    - Taxa de convers�o utilizada;
-    - Data/Hora UTC;
-1. Os casos de falha devem retornar com status code pertinente e descri��o no corpo;
-1. Dever� existir um endpoint para listagem de todas as transa��es realizadas por usu�rio;
-1. Deve haver uma cobertura satisfat�ria de testes;
-1. Deve-se adicionar a esse arquivo explica��es sobre como rodar a aplica��o, e uma apresenta��o sobre o
-   projeto: prop�sito, features, motiva��o das principais escolhas de tecnologias, e separa��o das camadas;
-1. Todo o c�digo deve ser em ingl�s;
-1. Disponibilizar o c�digo apenas nesse reposit�rio, sem nenhuma c�pia p�blica, para evitar pl�gio;
+    Deve ser possível realizar a conversão entre 4 moedas no mínimo (BRL, USD, EUR, JPY);
+    As taxas de conversão devem ser obtidas de [https://api.exchangeratesapi.io/latest?base=EUR] (Usar a API Free - Tem limitação de requisições, e apenas conversão com base na moeda EUR);
+    As transações de conversão devem ser persistidas no banco de dados (embedded) contendo:
+        ID do usuário;
+        Moeda origem;
+        Valor origem;
+        Moeda destino;
+        Taxa de conversão utilizada;
+        Data/Hora UTC;
+    Uma transação com sucesso deve retornar:
+        ID da transação
+        ID do usuário;
+        Moeda origem;
+        Valor origem;
+        Moeda destino;
+        Valor destino;
+        Taxa de conversão utilizada;
+        Data/Hora UTC;
+    Os casos de falha devem retornar com status code pertinente e descrição no corpo;
+    Deverá existir um endpoint para listagem de todas as transações realizadas por usuário;
+    Deve haver uma cobertura satisfatória de testes;
+    Deve-se adicionar a esse arquivo explicações sobre como rodar a aplicação, e uma apresentação sobre o projeto: propósito, features, motivação das principais escolhas de tecnologias, e separação das camadas;
+    Todo o código deve ser em inglês;
+    Disponibilizar o código apenas nesse repositório, sem nenhuma cópia pública, para evitar plágio;
 
-## Itens desej�veis
+Itens desejáveis
 
--   Logs
--   Tratamento de exce��es
--   Documenta��o
--   Coes�o de commits
--   Mensagens de commits claras
--   Configura��o de lint
--   Testes unit�rios
--   Testes de integra��o
--   Documenta��o dos endpoints
--   Estar rodando e dispon�vel (Ex: Heroku, ou similar)
--   CI/CD
+    Logs
+    Tratamento de exceções
+    Documentação
+    Coesão de commits
+    Mensagens de commits claras
+    Configuração de lint
+    Testes unitários
+    Testes de integração
+    Documentação dos endpoints
+    Estar rodando e disponível (Ex: Heroku, ou similar)
+    CI/CD
