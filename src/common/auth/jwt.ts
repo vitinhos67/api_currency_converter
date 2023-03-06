@@ -1,6 +1,10 @@
 import * as jwt from 'jsonwebtoken';
 import { JsonWebTokenError, JwtPayload } from 'jsonwebtoken';
 
+interface idUser extends JwtPayload {
+    id: string;
+}
+
 class JWT {
     access_token(id: string): string {
         return jwt.sign(
@@ -28,6 +32,10 @@ class JWT {
         } catch (err) {
             return err as JsonWebTokenError;
         }
+    }
+
+    verify(token: string): idUser {
+        return jwt.verify(token, String(process.env.SECRET)) as idUser;
     }
 }
 

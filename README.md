@@ -13,39 +13,39 @@ O projeto deverá ser feito em Node.js com TypeScript.
 1. Deve ser possível realizar a conversão entre 4 moedas no mínimo (BRL, USD, EUR, JPY);
 1. As taxas de conversão devem ser obtidas de [https://api.exchangeratesapi.io/latest?base=USD];
 1. As transações de conversão devem ser persistidas no banco de dados (embedded) contendo:
-    * ID do usuário;
-    * Moeda origem;
-    * Valor origem;
-    * Moeda destino;
-    * Taxa de conversão utilizada;
-    * Data/Hora UTC;
+    - ID do usuário;
+    - Moeda origem;
+    - Valor origem;
+    - Moeda destino;
+    - Taxa de conversão utilizada;
+    - Data/Hora UTC;
 1. Uma transação com sucesso deve retornar:
-    * ID da transação
-    * ID do usuário;
-    * Moeda origem;
-    * Valor origem;
-    * Moeda destino;
-    * Valor destino;
-    * Taxa de conversão utilizada;
-    * Data/Hora UTC;
+    - ID da transação
+    - ID do usuário;
+    - Moeda origem;
+    - Valor origem;
+    - Moeda destino;
+    - Valor destino;
+    - Taxa de conversão utilizada;
+    - Data/Hora UTC;
 1. Uma transação com falha conhecida deve retornar um erro HTTP 400 com a descrição da falha;
 1. Deverá existir um endpoint para listagem de todas as transações realizadas por usuário;
 1. Deve haver uma cobertura satisfatória de testes;
 1. Deve-se adicionar a esse arquivo explicações sobre como rodar a aplicação, e uma apresentação sobre o
-projeto: propósito, features, motivação das principais escolhas de tecnologias, e separação das camadas;
+   projeto: propósito, features, motivação das principais escolhas de tecnologias, e separação das camadas;
 1. Todo o código deve ser em inglês;
 1. Disponibilizar o código apenas nesse repositório, sem nenhuma cópia pública, para evitar plágio;
 
 ## Itens desejáveis
-* Logs
-* Tratamento de exceções
-* Documentação
-* Coesão de commits
-* Mensagens de commits claras
-* Configuração de lint
-* Testes unitários
-* Testes de integração
-* Documentação dos endpoints
-* Estar rodando e disponível (Ex: Heroku, ou similar)
-* CI/CD
 
+-   Logs
+-   Tratamento de exceções
+-   Documentação
+-   Coesão de commits
+-   Mensagens de commits claras
+-   Configuração de lint
+-   Testes unitários
+-   Testes de integração
+-   Documentação dos endpoints
+-   Estar rodando e disponível (Ex: Heroku, ou similar)
+-   CI/CD

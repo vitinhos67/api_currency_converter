@@ -41,6 +41,18 @@ export class SyntaxError extends Error {
         super(message);
         this.message = message;
         this.name = 'SyntaxError';
+        this.statusCode = 403;
+    }
+}
+
+export class AccessDenied extends Error {
+    statusCode: number;
+    status: string;
+    constructor(message: string) {
+        super(message);
+        this.status = 'Access Denied: Operation not realized';
+        this.message = message;
+        this.name = 'AcessDenied';
         this.statusCode = 401;
     }
 }
