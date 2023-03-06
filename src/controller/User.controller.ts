@@ -3,7 +3,7 @@ import { UserServiceInterface } from '../interfaces/users/userModel.interface';
 import { User, UserAuthResponse, UserLoginInterface } from '../interfaces/users/User.interface';
 import usersService from '../services/users/users.service';
 import { FastifyRequest } from 'fastify';
-import { UserCreateDTO, UserLoginDTO } from './dto/User/User.dto';
+import { UserCreateDTO, UserLoginDTO } from '../dto/User/User.dto';
 import Zod = require('zod');
 
 class UserController {
