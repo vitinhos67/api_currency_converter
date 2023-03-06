@@ -8,7 +8,7 @@ function correntyConversorRoutes(fastify: FastifyInstance, options: any, done: a
         {
             preHandler: Auth,
         },
-        CorrentyConversorController.convertCurrenty,
+        CorrentyConversorController.addTransaction,
     );
 
     done();

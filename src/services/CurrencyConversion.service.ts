@@ -1,44 +1,38 @@
-import axios, { AxiosInstance } from 'axios';
-
-export interface ConvertInterface {
-    from: string;
-    to: string;
-    amount: string;
+import { User } from '../interfaces/users/User.interface';
+import TransactionsModel, { TransactionsInterface } from '../model/Transactions.model';
+import HttpRequestAPI from '../api/request.api';
+import catchErrorsFunctions from '../common/utils/catchErrorsFunction';
+export interface ConvertInterface<T> {
+    data: {
+        from: string;
+        to: string;
+        amount: string;
+    };
+    user: T;
 }
 
-class CurrentyConversionService {
-    private readonly http: AxiosInstance;
-    private readonly base_url: string;
-    private readonly access_key: string;
-    constructor(http: AxiosInstance) {
-        this.http = http;
-        this.base_url = process.env.BASE_URL_API || '';
-        this.access_key = process.env.ACCESS_KEY || '';
-    }
+class TransactionsService {
+    async addTransaction(currencyConvert: ConvertInterface<User>) {
+        try {
+            const data = await HttpRequestAPI.convert(currencyConvert);
 
-    async convertCurrenty(convertData: ConvertInterface) {
-        const options = {
-            method: 'GET',
-            url: 'https://api.apilayer.com/exchangerates_data/convert',
-            params: {
-                to: convertData.to,
-                from: convertData.from,
-                amount: convertData.amount,
-            },
-            headers: {
-                apikey: this.access_key,
-            },
-        };
+            const values: TransactionsInterface = {
+                rate: data.info.rate,
+                from: data.query.from,
+                to: data.query.to,
+                id_user: currencyConvert.user.id || '',
+                result: data.result,
+                created_at: data.date,
+                amount_from: data.query.amount,
+            };
 
-        const data = this.http
-            .request(options)
-            .then((response: { data: any }) => response.data)
-            .catch((error: any) => console.log(error));
+            const saveTransaction = await TransactionsModel.store(values);
 
-        const resolvedata = await data;
-
-        return resolvedata;
+            return saveTransaction;
+        } catch (error) {
+            catchErrorsFunctions(error);
+        }
     }
 }
 
-export default new CurrentyConversionService(axios);
+export default new TransactionsService();

@@ -13,11 +13,7 @@ export interface QueryStringConvert {
     user?: User;
 }
 
-const Auth = async (
-    req: FastifyRequest<{ Headers: { access_key: string }; Querystring: QueryStringConvert }>,
-    res: any,
-    next: any,
-) => {
+const Auth = async (req: FastifyRequest<{ Headers: { access_key: string }; Querystring: QueryStringConvert }>) => {
     try {
         const { access_key } = req.headers;
 
@@ -34,8 +30,6 @@ const Auth = async (
         }
 
         req.query.user = verifyUser;
-
-        next();
     } catch (error) {
         catchErrorsFunctions(error);
     }
