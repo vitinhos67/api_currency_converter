@@ -22,6 +22,8 @@ const swagger = async (app: FastifyInstance, optns: any, done: any) => {
         },
         transformSpecificationClone: true,
     });
+
+    done();
 };
 
 export default swagger;
