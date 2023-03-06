@@ -9,7 +9,7 @@ import swaggerOptions from './helpers/swagger.options';
 import pino from 'pino';
 import dbConnector from './config/database';
 import usersRoutes from './routes/User.router';
-import correntyConversorRoutes from './routes/CurrentyConversion.router';
+import correntyConversorRoutes from './routes/CorrencyConversion.router';
 
 const app: FastifyInstance = fastify({
     logger: pino({ level: 'info' }),

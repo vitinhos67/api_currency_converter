@@ -1,7 +1,7 @@
 import { FastifyRequest } from 'fastify/types/request';
 import catchErrorsFunctions from '../common/utils/catchErrorsFunction';
-import { ConvertDto } from '../dto/User/ConvertInterface.dto';
-import currentyConversionService from '../services/CurrentyConversion.service';
+import { ConvertDto } from '../dto/User/ConvertCurrency.dto';
+import currentyConversionService from '../services/CurrencyConversion.service';
 import * as Zod from 'zod';
 import { QueryStringConvert } from '../middlewares/Auth.middleware';
 class CorrentyConversorController {
