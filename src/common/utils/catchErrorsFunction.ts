@@ -4,6 +4,12 @@ import mongoose from 'mongoose';
 
 import { AccessDenied, InternalServerError, InvalidArgumentError } from '../../services/err/Errors';
 
+/**
+ *
+ * @param error
+ * @description The function capture erros from all aplication and throw her
+ */
+
 export default function catchErrorsFunctions<T>(error: T) {
     if (error instanceof mongoose.Error.CastError) {
         throw new InvalidArgumentError('Error: could not find');

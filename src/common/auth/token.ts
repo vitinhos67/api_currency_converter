@@ -2,6 +2,13 @@ import { AccessDenied } from '../../services/err/Errors';
 import catchErrorsFunctions from '../utils/catchErrorsFunction';
 import jwt from './jwt';
 
+/**
+ *
+ * @param token
+ * @returns {Boolean}
+ * @description Validate if token is valid to prossigue in requisition
+ */
+
 export const isTokenExpired = (token: string): boolean => {
     try {
         const { exp } = jwt.decrypt(token) as {
@@ -15,6 +22,14 @@ export const isTokenExpired = (token: string): boolean => {
         return true;
     }
 };
+
+/**
+ *
+ * @param reflesh_token
+ * @returns {String}
+ * @description Authenticates the user if it has a refresh token,
+ * in which case the access token will be expired, If reflesh token is expired throw an error
+ */
 
 export const AuthenticateTokenExpired = (reflesh_token: string) => {
     try {

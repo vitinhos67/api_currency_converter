@@ -1,4 +1,8 @@
 import mongoose from 'mongoose';
+
+/**
+ * Setup for connect with database in application
+ */
 async function dbConnector() {
     try {
         mongoose.set('strictQuery', false);
