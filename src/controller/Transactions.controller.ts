@@ -2,12 +2,12 @@ import { FastifyRequest } from 'fastify/types/request';
 import { FastifyReply } from 'fastify/types/reply';
 import catchErrorsFunctions from '../common/utils/catchErrorsFunction';
 import { ConvertDto } from '../dto/User/ConvertCurrency.dto';
-import TransactionsService from '../services/CurrencyConversion.service';
+import TransactionsService from '../services/transactions/Transactions.service';
 import * as Zod from 'zod';
 import { QueryStringConvert } from '../middlewares/Auth.middleware';
 import { InvalidArgumentError } from '../services/err/Errors';
 
-class CorrentyConversorController {
+class TransactionsController {
     async addTransaction(req: FastifyRequest<{ Querystring: QueryStringConvert }>, res: FastifyReply) {
         try {
             const data = ConvertDto.parse(req.query);
@@ -32,4 +32,4 @@ class CorrentyConversorController {
     }
 }
 
-export default new CorrentyConversorController();
+export default new TransactionsController();

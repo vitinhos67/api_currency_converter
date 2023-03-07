@@ -33,6 +33,14 @@ class TransactionsModel {
             catchErrorsFunctions(error);
         }
     }
+
+    async allTransactions() {
+        try {
+            return await this.Transactions.find();
+        } catch (error) {
+            catchErrorsFunctions(error);
+        }
+    }
 }
 
 export default new TransactionsModel();

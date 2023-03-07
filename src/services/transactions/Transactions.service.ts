@@ -1,7 +1,7 @@
-import { User } from '../interfaces/users/User.interface';
-import TransactionsModel, { TransactionsInterface } from '../model/Transactions.model';
-import HttpRequestAPI from '../api/request.api';
-import catchErrorsFunctions from '../common/utils/catchErrorsFunction';
+import { User } from '../../interfaces/users/User.interface';
+import TransactionsModel, { TransactionsInterface } from '../../model/Transactions.model';
+import HttpRequestAPI from '../../api/request.api';
+import catchErrorsFunctions from '../../common/utils/catchErrorsFunction';
 export interface ConvertInterface<T> {
     data: {
         from: string;

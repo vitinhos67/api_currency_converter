@@ -1,7 +1,7 @@
 import { User } from '../interfaces/users/User.interface';
 import axios from 'axios';
 
-import { ConvertInterface } from '../services/CurrencyConversion.service';
+import { ConvertInterface } from '../services/transactions/Transactions.service';
 import catchErrorsFunctions from '../common/utils/catchErrorsFunction';
 
 class HttpRequestAPI {

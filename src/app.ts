@@ -10,7 +10,7 @@ import pino from 'pino';
 import dbConnector from './config/database';
 
 import corsSettings from './config/cors.config';
-import routes from './routes/index.router';
+import routes from './routes/router';
 import pinoSettings from './config/pino.config';
 
 const app: FastifyInstance = fastify({

@@ -1,18 +1,18 @@
 import { FastifyInstance } from 'fastify';
-import CorrentyConversorController from '../controller/CurrencyConversor.controller';
+import Transactionsontroller from '../controller/Transactions.controller';
 import { Done, Options } from '../interfaces/pluginsParam.interface';
 import Auth from '../middlewares/Auth.middleware';
 
-function correntyConversorRoutes(fastify: FastifyInstance, options: Options, done: Done) {
+function transactionsRoutes(fastify: FastifyInstance, options: Options, done: Done) {
     fastify.get(
         '/convert',
         {
             preHandler: Auth,
         },
-        CorrentyConversorController.addTransaction,
+        Transactionsontroller.addTransaction,
     );
 
     done();
 }
 
-export default correntyConversorRoutes;
+export default transactionsRoutes;
