@@ -40,7 +40,7 @@ class UserController {
         }
     }
 
-    async login(req: FastifyRequest<{ Body: User }>): Promise<UserAuthResponse | void | null> {
+    async login(req: FastifyRequest<{ Body: User }>, res: FastifyReply): Promise<UserAuthResponse | void | null> {
         try {
             const body: UserLoginInterface = UserLoginDTO.parse(req.body);
 
@@ -48,6 +48,10 @@ class UserController {
 
             return data;
         } catch (error) {
+            if (error instanceof Zod.ZodError) {
+                res.status(403).send(error.issues);
+            }
+
             catchErrorsFunctions(error);
         }
     }

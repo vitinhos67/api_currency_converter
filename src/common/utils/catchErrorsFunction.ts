@@ -1,7 +1,7 @@
 import { JsonWebTokenError } from 'jsonwebtoken';
 import app from '../../app';
 import mongoose from 'mongoose';
-
+import Zod = require('zod');
 import { AccessDenied, InternalServerError, InvalidArgumentError } from '../../services/err/Errors';
 
 /**

@@ -4,7 +4,7 @@
     "description": "Voc� dever� implementar uma API Rest que seja capaz de realizar a convers�o entre duas moedas\r utilizando taxas de convers�es atualizadas de um servi�o externo.",
     "main": "index.js",
     "scripts": {
-        "dev": "ts-node-dev src/app.ts",
+        "dev": "ts-node-dev src/server.ts",
         "format": "npx prettier --write .",
         "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
     },
