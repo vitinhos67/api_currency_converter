@@ -2,7 +2,7 @@ import { FastifyRequest } from 'fastify';
 import { User, UserAuthResponse } from './User.interface';
 import { UserCreateInterface } from './User.interface';
 export interface UserModelInterface {
-    store(user: UserCreateInterface): Promise<User | void>;
+    store(user: UserCreateInterface): Promise<User>;
     findByEmail(email: string): Promise<User | void | null>;
     findUserById(id: string): Promise<User | void | null>;
     findAll(): Promise<User[] | void | []>;
@@ -12,7 +12,7 @@ export interface UserModelInterface {
 export interface UserServiceInterface {
     findById(id: string): Promise<User | void | null>;
     findAll(): Promise<User[] | void | []>;
-    store(user: User): Promise<User | void>;
+    store(user: User): Promise<UserAuthResponse | void>;
     login(user: User): Promise<UserAuthResponse | void>;
 }
 

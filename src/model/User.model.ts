@@ -24,12 +24,14 @@ export const UserSchema = new Schema({
 class UserModel implements UserModelInterface {
     User = model('user', UserSchema);
 
-    async store(user: UserCreateInterface): Promise<User | void> {
+    async store(user: UserCreateInterface): Promise<User> {
         try {
             return await this.User.create(user);
         } catch (error) {
             catchErrorsFunctions(error);
         }
+
+        return user;
     }
     async findByEmail(email: string): Promise<User | void | null> {
         try {

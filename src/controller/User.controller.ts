@@ -25,11 +25,11 @@ class UserController {
         }
     }
 
-    async store(req: FastifyRequest<{ Body: User }>, res: any): Promise<User | void | null> {
+    async store(req: FastifyRequest<{ Body: User }>, res: any): Promise<UserAuthResponse | void | null> {
         try {
             const body: User = UserCreateDTO.parse(req.body);
-            const data = await usersService.store(body);
-            return data;
+
+            return await usersService.store(body);
         } catch (error) {
             if (error instanceof Zod.ZodError) {
                 res.send(error.issues);
@@ -43,7 +43,9 @@ class UserController {
         try {
             const body: UserLoginInterface = UserLoginDTO.parse(req.body);
 
-            return await usersService.login(body);
+            const data = await usersService.login(body);
+
+            return data;
         } catch (error) {
             catchErrorsFunctions(error);
         }

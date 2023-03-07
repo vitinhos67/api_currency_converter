@@ -19,7 +19,6 @@ export interface User {
 
 export interface UserAuthResponse {
     username: string;
-    password: string;
     email: string;
     created_at?: Date;
     id?: string;

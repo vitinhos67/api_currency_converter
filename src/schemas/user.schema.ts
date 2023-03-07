@@ -1,18 +1,18 @@
-export const userSchema = {
+const userSchema = {
     type: 'object',
     properties: {
-        id: { type: 'string' },
-        name: { type: 'string' },
+        _id: { type: 'string' },
+        username: { type: 'string' },
         email: { type: 'string' },
         created_at: { type: 'string' },
     },
 };
 
-export const loginUserSchema = {
+const loginAndCreateUserSchema = {
     type: 'object',
     properties: {
         id: { type: 'string' },
-        name: { type: 'string' },
+        username: { type: 'string' },
         email: { type: 'string' },
         created_at: { type: 'string' },
         access_key: { type: 'string' },
@@ -56,7 +56,7 @@ export const schemaCreateUser = {
             },
         },
         response: {
-            204: userSchema,
+            204: loginAndCreateUserSchema,
         },
     },
 };
@@ -72,7 +72,7 @@ export const schemaLoginUser = {
         },
 
         response: {
-            200: loginUserSchema,
+            200: loginAndCreateUserSchema,
         },
     },
 };

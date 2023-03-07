@@ -5,6 +5,7 @@ import { User, UserAuthResponse, UserLoginInterface } from '../../interfaces/use
 import { InvalidArgumentError } from '../err/Errors';
 import * as bcrypt from 'bcrypt';
 import jwt from '../../common/auth/jwt';
+import app from '../../app';
 
 class UserService implements UserServiceInterface {
     private readonly userModel: UserModelInterface;
@@ -28,7 +29,7 @@ class UserService implements UserServiceInterface {
         }
     }
 
-    async store(user: User) {
+    async store(user: User): Promise<UserAuthResponse | void> {
         try {
             const errors = [];
 
@@ -48,9 +49,23 @@ class UserService implements UserServiceInterface {
             const cryptPassword = await bcrypt.hash(user.password, salt);
             user.password = cryptPassword;
 
-            const saveUserDb = await this.userModel.store(user);
+            const userdb = await this.userModel.store(user);
 
-            return saveUserDb;
+            if (userdb.id) {
+                const access_token = jwt.access_token(userdb.id);
+                const reflesh_token = jwt.reflesh_token(userdb.id);
+
+                return {
+                    id: userdb.id,
+                    username: userdb.username,
+                    email: userdb.email,
+                    created_at: userdb.created_at,
+                    access_token,
+                    reflesh_token,
+                };
+            }
+
+            return;
         } catch (error) {
             catchErrorsFunctions(error);
         }
@@ -58,38 +73,30 @@ class UserService implements UserServiceInterface {
 
     async login(user: UserLoginInterface): Promise<UserAuthResponse | void> {
         try {
-            const err = [];
-
             const userdb = await this.userModel.findByEmail(user.email);
 
             if (!userdb) {
-                err.push('User not found');
+                throw new InvalidArgumentError('Error: User not found');
             }
 
-            if (userdb?.password) {
-                const comparePassword = await bcrypt.compare(user.password, userdb.password);
+            const comparePassword = await bcrypt.compare(user.password, userdb.password);
 
-                if (!comparePassword) {
-                    err.push('Password invalid;');
-                }
-
-                if (err.length) {
-                    throw new InvalidArgumentError(JSON.stringify(err));
-                }
-
-                if (userdb.id) {
-                    const access_token = jwt.access_token(userdb.id);
-                    const reflesh_token = jwt.reflesh_token(userdb.id);
-
-                    return {
-                        ...userdb,
-                        access_token,
-                        reflesh_token,
-                    };
-                }
+            if (!comparePassword) {
+                throw new InvalidArgumentError('Password invalid;');
             }
 
-            return;
+            if (userdb.id) {
+                const access_token = jwt.access_token(userdb.id);
+                const reflesh_token = jwt.reflesh_token(userdb.id);
+                return {
+                    id: userdb.id,
+                    username: userdb.username,
+                    email: userdb.email,
+                    created_at: userdb.created_at,
+                    access_token,
+                    reflesh_token,
+                };
+            }
         } catch (error) {
             catchErrorsFunctions(error);
         }
