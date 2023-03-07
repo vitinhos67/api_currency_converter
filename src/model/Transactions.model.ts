@@ -12,7 +12,7 @@ export interface TransactionsInterface {
     created_at: string;
 }
 
-export const TransactionsSchema = new Schema({
+const TransactionsSchema = new Schema({
     id_user: {
         type: mongoose.Types.ObjectId,
     },
