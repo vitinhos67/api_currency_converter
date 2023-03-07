@@ -31,8 +31,12 @@ class TransactionsController {
         }
     }
 
-    async allTransactions() {
+    async findTransactions(req: FastifyRequest<{ Querystring: { user: string } }>) {
         try {
+            if (req.query.user) {
+                return await TransactionsService.findTransactionsFromUser(req.query.user);
+            }
+
             return await TransactionsService.allTransactions();
         } catch (error) {
             catchErrorsFunctions(error);

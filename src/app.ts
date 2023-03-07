@@ -5,7 +5,7 @@ import fastify from 'fastify';
 
 import { FastifyInstance } from 'fastify/types/instance';
 import swagger from '@fastify/swagger';
-import swaggerOptions from './helpers/swagger.options';
+import swaggerOptions from './config/swagger.options';
 import pino from 'pino';
 import dbConnector from './config/database';
 

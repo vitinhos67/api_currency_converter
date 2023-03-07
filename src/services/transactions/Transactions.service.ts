@@ -41,6 +41,14 @@ class TransactionsService {
             catchErrorsFunctions(error);
         }
     }
+
+    async findTransactionsFromUser(id: string) {
+        try {
+            return await TransactionsModel.findTransactionsFromUser(id);
+        } catch (error) {
+            catchErrorsFunctions(error);
+        }
+    }
 }
 
 export default new TransactionsService();

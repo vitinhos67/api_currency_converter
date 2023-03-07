@@ -1,6 +1,14 @@
 import { FastifyInstance } from 'fastify';
 import swaggerui from '@fastify/swagger-ui';
 import { Done, Options } from '../interfaces/pluginsParam.interface';
+
+/**
+ *
+ * @param app
+ * @param optns
+ * @param done
+ * @description Used for set configs and load documentation in /docs through the swagger lib.
+ */
 const swagger = async (app: FastifyInstance, optns: Options, done: Done) => {
     await app.register(swaggerui, {
         routePrefix: '/docs',
