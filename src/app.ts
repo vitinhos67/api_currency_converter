@@ -2,44 +2,29 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 import fastify from 'fastify';
-import cors from '@fastify/cors';
+
 import { FastifyInstance } from 'fastify/types/instance';
 import swagger from '@fastify/swagger';
 import swaggerOptions from './helpers/swagger.options';
 import pino from 'pino';
 import dbConnector from './config/database';
-import usersRoutes from './routes/User.router';
-import correntyConversorRoutes from './routes/CorrencyConversion.router';
+
+import corsSettings from './config/cors.config';
+import routes from './routes/index.router';
+import pinoSettings from './config/pino.config';
 
 const app: FastifyInstance = fastify({
-    logger: pino({
-        level: 'info',
-        transport: {
-            target: 'pino-pretty',
-            options: {
-                colorize: true,
-            },
-        },
-    }),
+    logger: pino(pinoSettings),
 });
 
 app.register(swagger);
+app.register(corsSettings);
 
 (async () => {
     await app.register(swaggerOptions);
 })();
 
-app.register(cors, {
-    origin: ['http://127.0.0.1:8080', 'http://localhost:3000'],
-    methods: ['GET', 'PUT', 'PATCH', 'POST', 'DELETE'],
-});
-
-app.register(correntyConversorRoutes, {
-    prefix: '/api/v1',
-});
-app.register(usersRoutes, {
-    prefix: '/api/v1',
-});
+app.register(routes);
 
 app.listen(
     {
