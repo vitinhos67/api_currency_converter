@@ -21,10 +21,10 @@ class TransactionsController {
                 user: req.query.user,
             });
 
-            return res.status(200).send(response);
+            res.status(200).send(response);
         } catch (error) {
             if (error instanceof Zod.ZodError) {
-                return res.status(401).send(error.issues);
+                res.status(401).send(error.issues);
             }
 
             catchErrorsFunctions(error);

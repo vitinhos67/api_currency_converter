@@ -1,7 +1,7 @@
 import * as jwt from 'jsonwebtoken';
-import { JsonWebTokenError, JwtPayload } from 'jsonwebtoken';
+import { JwtPayload } from 'jsonwebtoken';
 
-interface idUser extends JwtPayload {
+export interface idUser extends JwtPayload {
     id: string;
 }
 
@@ -24,14 +24,9 @@ class JWT {
         });
     }
 
-    decrypt(token: string): string | JwtPayload | null | JsonWebTokenError {
-        try {
-            const data = jwt.decode(token);
-
-            return data;
-        } catch (err) {
-            return err as JsonWebTokenError;
-        }
+    decrypt(token: string): idUser {
+        const data = jwt.decode(token) as idUser;
+        return data;
     }
 
     verify(token: string): idUser {

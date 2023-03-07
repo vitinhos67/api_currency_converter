@@ -25,7 +25,7 @@ export const schemaUser = {
         params: {
             type: 'object',
             properties: {
-                id: { type: 'integer' },
+                id: { type: 'string' },
             },
         },
         response: {
