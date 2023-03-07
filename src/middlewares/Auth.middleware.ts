@@ -22,7 +22,6 @@ const Auth = async (req: FastifyRequest<{ Headers: { access_key: string }; Query
         }
 
         const verifyToken = jwt.verify(access_key as string);
-
         const verifyUser = await usersService.findById(verifyToken.id);
 
         if (!verifyUser) {

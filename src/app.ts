@@ -12,7 +12,15 @@ import usersRoutes from './routes/User.router';
 import correntyConversorRoutes from './routes/CorrencyConversion.router';
 
 const app: FastifyInstance = fastify({
-    logger: pino({ level: 'info' }),
+    logger: pino({
+        level: 'info',
+        transport: {
+            target: 'pino-pretty',
+            options: {
+                colorize: true,
+            },
+        },
+    }),
 });
 
 app.register(swagger);
@@ -42,3 +50,5 @@ app.listen(
         app.log.info('listening port 3000');
     },
 );
+
+export default app;
