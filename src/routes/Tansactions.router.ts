@@ -11,6 +11,7 @@ function transactionsRoutes(fastify: FastifyInstance, options: Options, done: Do
         },
         Transactionsontroller.addTransaction,
     );
+    fastify.get('/transactions', Transactionsontroller.allTransactions);
 
     done();
 }

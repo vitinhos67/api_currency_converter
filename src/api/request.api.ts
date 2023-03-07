@@ -1,7 +1,7 @@
 import { User } from '../interfaces/users/User.interface';
 import axios from 'axios';
 
-import { ConvertInterface } from '../services/transactions/Transactions.service';
+import { TransactionsDTO } from '../services/transactions/Transactions.service';
 import catchErrorsFunctions from '../common/utils/catchErrorsFunction';
 
 class HttpRequestAPI {
@@ -12,7 +12,7 @@ class HttpRequestAPI {
         this.access_key = process.env.ACCESS_KEY || '';
     }
 
-    async convert(currencyConvert: ConvertInterface<User>) {
+    async convert(currencyConvert: TransactionsDTO<User>) {
         try {
             const options = {
                 method: 'GET',

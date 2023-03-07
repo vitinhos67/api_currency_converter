@@ -2,7 +2,7 @@ import { User } from '../../interfaces/users/User.interface';
 import TransactionsModel, { TransactionsInterface } from '../../model/Transactions.model';
 import HttpRequestAPI from '../../api/request.api';
 import catchErrorsFunctions from '../../common/utils/catchErrorsFunction';
-export interface ConvertInterface<T> {
+export interface TransactionsDTO<T> {
     data: {
         from: string;
         to: string;
@@ -12,15 +12,15 @@ export interface ConvertInterface<T> {
 }
 
 class TransactionsService {
-    async addTransaction(currencyConvert: ConvertInterface<User>) {
+    async addTransaction(transactions: TransactionsDTO<User>) {
         try {
-            const data = await HttpRequestAPI.convert(currencyConvert);
+            const data = await HttpRequestAPI.convert(transactions);
 
             const values: TransactionsInterface = {
                 rate: data.info.rate,
                 from: data.query.from,
                 to: data.query.to,
-                id_user: currencyConvert.user.id || '',
+                id_user: transactions.user.id || '',
                 result: data.result,
                 created_at: data.date,
                 amount_from: data.query.amount,
@@ -29,6 +29,14 @@ class TransactionsService {
             const saveTransaction = await TransactionsModel.store(values);
 
             return saveTransaction;
+        } catch (error) {
+            catchErrorsFunctions(error);
+        }
+    }
+
+    async allTransactions() {
+        try {
+            return await TransactionsModel.allTransactions();
         } catch (error) {
             catchErrorsFunctions(error);
         }
