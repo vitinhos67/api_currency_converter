@@ -1,5 +1,6 @@
 import mongoose, { model, Schema } from 'mongoose';
 import catchErrorsFunctions from '../common/utils/catchErrorsFunction';
+import { ParamsDTOInterface } from '../dto/transactions/paramsSearch.interface';
 
 export interface TransactionsInterface {
     id_user: string;
@@ -34,18 +35,16 @@ class TransactionsModel {
         }
     }
 
-    async allTransactions() {
+    async allTransactions(params: ParamsDTOInterface) {
         try {
-            return await this.Transactions.find();
+            return await this.Transactions.find(params);
         } catch (error) {
             catchErrorsFunctions(error);
         }
     }
-    async findTransactionsFromUser(id: string) {
+    async findTransactionsFromUser(params: ParamsDTOInterface) {
         try {
-            return await this.Transactions.find({
-                id_user: id,
-            });
+            return await this.Transactions.find(params);
         } catch (error) {
             catchErrorsFunctions(error);
         }

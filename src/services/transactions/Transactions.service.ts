@@ -2,6 +2,7 @@ import { User } from '../../interfaces/users/User.interface';
 import TransactionsModel, { TransactionsInterface } from '../../model/Transactions.model';
 import HttpRequestAPI from '../../api/request.api';
 import catchErrorsFunctions from '../../common/utils/catchErrorsFunction';
+import { ParamsDTOInterface } from '../../dto/transactions/paramsSearch.interface';
 export interface TransactionsDTO<T> {
     data: {
         from: string;
@@ -34,17 +35,17 @@ class TransactionsService {
         }
     }
 
-    async allTransactions() {
+    async allTransactions(params: ParamsDTOInterface) {
         try {
-            return await TransactionsModel.allTransactions();
+            return await TransactionsModel.allTransactions(params);
         } catch (error) {
             catchErrorsFunctions(error);
         }
     }
 
-    async findTransactionsFromUser(id: string) {
+    async findTransactionsFromUser(params: ParamsDTOInterface) {
         try {
-            return await TransactionsModel.findTransactionsFromUser(id);
+            return await TransactionsModel.findTransactionsFromUser(params);
         } catch (error) {
             catchErrorsFunctions(error);
         }
