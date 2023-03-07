@@ -5,10 +5,13 @@
         "module": "commonjs" /* Specify what module code is generated. */,
         "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
         "strict": true /* Enable all strict type-checking options. */,
-        "typeRoots": ["./node_modules/@types", "./declarations"]
+        "typeRoots": ["./node_modules/@types", "./declarations"],
+        "outDir": "./dist"
     },
     "include": [
         "src/**/*",
-        "types/**/*" // path to your types directory
-    ]
+        "types/**/*",
+        "**/*.ts", // path to your types directory
+        "cypress"
+, "tests"    ]
 }

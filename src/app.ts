@@ -12,20 +12,29 @@ import corsSettings from './config/cors.config';
 import routes from './routes/router';
 import pinoSettings from './config/pino.config';
 
-/**
- * @type {import('fastify').FastifyInstance} Instance of Fastify
- */
-const app: FastifyInstance = fastify({
-    logger: pino(pinoSettings),
-});
+function build() {
+    const app: FastifyInstance = fastify({
+        logger: pino(pinoSettings),
+    });
 
-app.register(swagger);
-app.register(corsSettings);
+    app.route({
+        method: 'GET',
+        url: '/',
+        handler: () => {
+            return { root: true };
+        },
+    });
 
-(async () => {
-    await app.register(swaggerOptions);
-})();
+    app.register(swagger);
+    app.register(corsSettings);
 
-app.register(routes);
+    (async () => {
+        await app.register(swaggerOptions);
+    })();
 
-export default app;
+    app.register(routes);
+
+    return app;
+}
+
+export default build();

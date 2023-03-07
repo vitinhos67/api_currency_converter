@@ -1,5 +1,12 @@
+version: "3"
+
 services:
-    db:
-        image: mongo
-        ports:
-            - 27017:27017
+  db:
+    # Use the image from MongoDB
+    image: mongo:latest
+    # Define Image name
+    environment:
+      MONGO_INITDB_DATABASE: myapp
+    # port where find mongo
+    ports:
+      - 27017:27017
