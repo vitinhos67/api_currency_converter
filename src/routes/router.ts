@@ -4,12 +4,10 @@ import transactionsRoutes from './Tansactions.router';
 import { Done, Options } from '../interfaces/pluginsParam.interface';
 
 const routes = (app: FastifyInstance, options: Options, done: Done) => {
-    app.register(transactionsRoutes, {
-        prefix: '/api/v1',
-    });
-    app.register(usersRoutes, {
-        prefix: '/api/v1',
-    });
+    const prefix = { prefix: '/api/v1' };
+
+    app.register(transactionsRoutes, prefix);
+    app.register(usersRoutes, prefix);
 
     done();
 };
