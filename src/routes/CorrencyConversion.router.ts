@@ -1,8 +1,9 @@
 import { FastifyInstance } from 'fastify';
 import CorrentyConversorController from '../controller/CurrencyConversor.controller';
+import { Done, Options } from '../interfaces/pluginsParam.interface';
 import Auth from '../middlewares/Auth.middleware';
 
-function correntyConversorRoutes(fastify: FastifyInstance, options: any, done: any) {
+function correntyConversorRoutes(fastify: FastifyInstance, options: Options, done: Done) {
     fastify.get(
         '/convert',
         {

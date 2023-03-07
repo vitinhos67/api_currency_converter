@@ -1,6 +1,7 @@
 import { FastifyInstance } from 'fastify';
 import swaggerui from '@fastify/swagger-ui';
-const swagger = async (app: FastifyInstance, optns: any, done: any) => {
+import { Done, Options } from '../interfaces/pluginsParam.interface';
+const swagger = async (app: FastifyInstance, optns: Options, done: Done) => {
     await app.register(swaggerui, {
         routePrefix: '/docs',
         uiConfig: {

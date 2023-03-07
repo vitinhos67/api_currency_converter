@@ -1,7 +1,9 @@
 import { FastifyInstance } from 'fastify/types/instance';
 import usersRoutes from './User.router';
 import correntyConversorRoutes from './CorrencyConversion.router';
-const routes = (app: FastifyInstance, options: any, done: any) => {
+import { Done, Options } from '../interfaces/pluginsParam.interface';
+
+const routes = (app: FastifyInstance, options: Options, done: Done) => {
     app.register(correntyConversorRoutes, {
         prefix: '/api/v1',
     });

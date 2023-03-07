@@ -5,7 +5,6 @@ import { User, UserAuthResponse, UserLoginInterface } from '../../interfaces/use
 import { InvalidArgumentError } from '../err/Errors';
 import * as bcrypt from 'bcrypt';
 import jwt from '../../common/auth/jwt';
-import app from '../../app';
 
 class UserService implements UserServiceInterface {
     private readonly userModel: UserModelInterface;
