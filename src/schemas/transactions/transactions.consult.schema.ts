@@ -1,6 +1,7 @@
 export const schemaTransactions = {
     query: {
         type: 'object',
+        description: 'ok',
         properties: {
             id_user: { type: 'string', nullable: true },
             to: { type: 'string', nullable: true },

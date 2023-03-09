@@ -23,9 +23,9 @@
 ## Learn how to create an API Access Key.
 
 -  1 - Acess the link: https://apilayer.com/marketplace/exchangerates_data-api and click on "Subscribe for free" </l1>
-- 2 - Create an account if dont have.
-- 3 create an Access Key.
-- Add the key in .env.example
+- 2 -  Create an account if dont have.
+- 3 -  Create an Access Key.
+- 4  - Add the key in .env.example
 
 
 After following the steps you will be ready to run the application
@@ -56,9 +56,12 @@ JSON DOCUMENTATION:
 http://localhost:3000/docs/json
 ```
 
-<br/>
+## Running with Docker 
 
-
+feel free to just run image from app with Docker
+```bash
+$ docker compose up -d
+```
 
 ## Instalation
 
@@ -69,13 +72,6 @@ Use NPM for install dependences
 $ npm install
 ```
 <br/>
-
-
-
-feel free to just run the database through docker
-```npm
-$ docker compose up -d
-```
 
 Done that, build the project
 ```npm
